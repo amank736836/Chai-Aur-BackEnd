@@ -6,7 +6,7 @@ const app = express();
 const port = 4000;
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send(`Hello World! , running on port ${process.env.PORT || port}`);
 });
 
 app.get('/twitter', (req, res) => {
