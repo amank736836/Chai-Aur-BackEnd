@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
-const github = {
+const githubData = {
     "login": "amank736836",
     "id": 144197075,
     "node_id": "U_kgDOCJhF0w",
@@ -58,7 +58,7 @@ app.get('/youtube' , (req,res) => {
 });
 
 app.get('/github', (req, res) => {
-    res.json(github);
+    res.json(githubData);
 });
 
 app.get('')
