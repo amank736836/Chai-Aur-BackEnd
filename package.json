@@ -4,7 +4,7 @@
   "description": "a basic app to deploy",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon ./01_production/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

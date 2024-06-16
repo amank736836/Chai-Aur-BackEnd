@@ -61,8 +61,6 @@ app.get('/github', (req, res) => {
     res.json(githubData);
 });
 
-app.get('')
-
 app.listen(process.env.PORT || port , () => {
     console.log(`Example app listening at http://localhost:${process.env.PORT || port}`);
 });
