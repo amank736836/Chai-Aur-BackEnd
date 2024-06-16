@@ -3,8 +3,9 @@ const express = require('express');
 
 // import express from "express";
 const app = express();
-const port = 4000;
 
+// const port = 4000;
+const port = process.env.PORT || 4000;
 const githubData = {
     "login": "amank736836",
     "id": 144197075,
@@ -42,7 +43,7 @@ const githubData = {
 
 
 app.get('/', (req, res) => {
-    res.send(`Hello World! , running on port ${process.env.PORT || port}`);
+    res.send(`Hello World! , running on port ${port}`);
 });
 
 app.get('/twitter', (req, res) => {
@@ -61,6 +62,6 @@ app.get('/github', (req, res) => {
     res.json(githubData);
 });
 
-app.listen(process.env.PORT || port , () => {
-    console.log(`Example app listening at http://localhost:${process.env.PORT || port}`);
+app.listen(port , () => {
+    console.log(`Example app listening at http://localhost:${port}`);
 });
