@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon -r dotenv/config --experimental-json-modules ./05_Project(videoTube)/src/index.js",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules ./05_Project(videoTube)/src/index.js",
     "start": "nodemon ./01_production/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,8 @@
   "author": "Aman Kumar",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.3",

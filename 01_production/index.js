@@ -1,7 +1,10 @@
-require("dotenv").config();
-const express = require('express');
+import dotenv from 'dotenv';
+// require("dotenv").config();
+// const express = require('express');
 
-// import express from "express";
+dotenv.config();
+
+import express from "express";
 const app = express();
 
 // const port = 4000;
