@@ -1,7 +1,7 @@
 {
   "name": "chaibackend",
   "version": "1.0.0",
-  "description": "a basic app to deploy",
+  "description": "Learning BackEnd",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./01_production/index.js",
