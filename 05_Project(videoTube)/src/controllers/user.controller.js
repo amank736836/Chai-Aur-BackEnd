@@ -390,7 +390,7 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
             // runValidators : true
         }
     ).select("-password -refreshToken");
-    
+
 
     // TODO : delete old image - assignment for you
     const oldImage = req.user.avatar;
@@ -436,6 +436,14 @@ const updateUserCoverImage = asyncHandler(async (req, res, next) => {
             // runValidators : true
         }
     ).select("-password -refreshToken");
+
+    
+    // TODO : delete old image - assignment for you
+    const oldImage = req.user.coverImage;
+    if(oldImage){
+        const publicId = oldImage.split("/").pop().split(".")[0];
+        await cloudinary.uploader.destroy(publicId);
+    }
 
     return res
             .status(200)
