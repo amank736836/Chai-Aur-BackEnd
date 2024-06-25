@@ -369,6 +369,7 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
         throw new ApiError(400 , "Avatar file is missing");
     }
 
+    
     const avatar = await uploadOnCloudinary(avatarLocalPath);
 
     // if(!avatar){
@@ -376,7 +377,7 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
         // throw new ApiError(500 , "Avatar upload failed");
         throw new ApiError(500 , "Error while uploading avatar");
     }
-
+    
     const user = await User.findByIdAndUpdate(
         req.user._id,
         {
@@ -389,6 +390,14 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
             // runValidators : true
         }
     ).select("-password -refreshToken");
+    
+
+    // TODO : delete old image - assignment for you
+    const oldImage = req.user.avatar;
+    if(oldImage){
+        const publicId = oldImage.split("/").pop().split(".")[0];
+        await cloudinary.uploader.destroy(publicId);
+    }
 
     return res
             .status(200)
@@ -433,8 +442,6 @@ const updateUserCoverImage = asyncHandler(async (req, res, next) => {
             .json(new ApiResponse(200 , user , "Cover Image updated successfully"));
 
 });
-
-
 
 
 export {
