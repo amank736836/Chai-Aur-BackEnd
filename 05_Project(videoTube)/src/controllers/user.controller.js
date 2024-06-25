@@ -1,9 +1,10 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { User } from "../models/user.model.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { deleteFromCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 const generateAccessAndRefreshTokens = async (userId) => {
     try{
@@ -186,8 +187,8 @@ const logoutUser = asyncHandler(async (req, res, next) => {
         req.user._id ,
         {
             // refreshToken : ""
-            $set : {
-                refreshToken : undefined
+            $unset : {
+                refreshToken : 1
             }
         },
         {
@@ -230,9 +231,13 @@ const refreshAccessToken = asyncHandler(async (req, res, next) => {
 
 
     try {
+
+
         const decodedToken = jwt.verify(incomingRefreshToken , process.env.REFRESH_TOKEN_SECRET);
     
-        const user = User.findById(decodedToken?._id)
+        console.log(decodedToken);
+
+        const user = await User.findById(decodedToken?._id)
     
         if(!user){
             // throw new ApiError(404 , "User not found");
@@ -377,7 +382,7 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
         // throw new ApiError(500 , "Avatar upload failed");
         throw new ApiError(500 , "Error while uploading avatar");
     }
-    
+
     const user = await User.findByIdAndUpdate(
         req.user._id,
         {
@@ -396,7 +401,10 @@ const updateUserAvatar = asyncHandler(async (req, res, next) => {
     const oldImage = req.user.avatar;
     if(oldImage){
         const publicId = oldImage.split("/").pop().split(".")[0];
-        await cloudinary.uploader.destroy(publicId);
+        const deleted = await deleteFromCloudinary(publicId);
+        if(!deleted){
+            throw new ApiError(500 , "Error while deleting old avatar image");
+        }
     }
 
     return res
@@ -439,10 +447,13 @@ const updateUserCoverImage = asyncHandler(async (req, res, next) => {
 
     
     // TODO : delete old image - assignment for you
-    const oldImage = req.user.coverImage;
+    const oldImage = req.user.avatar;
     if(oldImage){
         const publicId = oldImage.split("/").pop().split(".")[0];
-        await cloudinary.uploader.destroy(publicId);
+        const deleted = await deleteFromCloudinary(publicId);
+        if(!deleted){
+            throw new ApiError(500 , "Error while deleting old avatar image");
+        }
     }
 
     return res
@@ -456,7 +467,7 @@ const getUserChannelProfile = asyncHandler(async (req, res, next) => {
     // find user
     // return response
 
-    const {username} = req.params.username;
+    const {username} = req.params;
 
     if(!username){
         throw new ApiError(400 , "Username is missing");
