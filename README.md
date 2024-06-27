@@ -32,3 +32,27 @@
     }
   },
 ]
+
+### List the top 5 most common fruit among users.
+
+[
+  {
+    $group: {
+      _id: "$favoriteFruit",
+      count : {
+        $sum : 1
+      },
+      // count2 : {
+      //   $count : {}
+      // }+
+    }
+  },
+  {
+    $sort: {
+      count : -1
+    }
+  },
+  {
+    $limit: 5
+  }
+]
