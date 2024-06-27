@@ -72,3 +72,28 @@
     }
   }
 ]
+
+### Which country has the highest number of registered users ?
+
+[
+  {
+    $group: {
+      _id: "$company.location.country",
+      userCount : {
+        $sum : 1
+      },
+      // userCount2 : {
+      //   $count : {}
+      // }
+    }
+  },
+  {
+    $sort: {
+      userCount: -1
+      // userCount: 1
+    }
+  },
+  {
+    $limit: 1
+  }
+]
