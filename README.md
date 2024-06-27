@@ -97,3 +97,21 @@
     $limit: 1
   }
 ]
+
+### List all unique eye colors present in the collection.
+
+[
+  {
+    $group: {
+      _id: "$eyeColor",
+      count : {
+        $sum : 1
+      }
+    }
+  },
+  {
+    $sort: {
+      count: -1
+    }
+  }
+]
