@@ -56,3 +56,19 @@
     $limit: 5
   }
 ]
+
+### Find the total number of males and females.
+
+[
+  {
+    $group: {
+      _id: "$gender",
+      genderCount : {
+        $sum : 1
+      }
+      // genderCount : {
+      //   $count : {}
+      // }
+    }
+  }
+]
