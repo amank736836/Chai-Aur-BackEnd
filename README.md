@@ -12,7 +12,7 @@
 
 ### How many users are active? 👥
 
-```json
+```javascript
 [
   {
     $match: {
@@ -27,7 +27,7 @@
 
 ### What is the average age of all users? 🎂
 
-```json
+```javascript
 [
   {
     $group: {
@@ -42,7 +42,7 @@
 
 ### List the top 5 most common fruits among users. 🍎🍌🍇
 
-```json
+```javascript
 [
   {
     $group: {
@@ -65,7 +65,7 @@
 
 ### Find the total number of males and females. 🚹🚺
 
-```json
+```javascript
 [
   {
     $group: {
@@ -80,7 +80,7 @@
 
 ### Which country has the highest number of registered users? 🌍
 
-```json
+```javascript
 [
   {
     $group: {
@@ -103,7 +103,7 @@
 
 ### List all unique eye colors present in the collection. 👁️
 
-```json
+```javascript
 [
   {
     $group: {
@@ -125,7 +125,7 @@
 
 #### Method 1:
 
-```json
+```javascript
 [
   {
     $unwind: "$tags",
@@ -151,7 +151,7 @@
 
 #### Method 2:
 
-```json
+```javascript
 [
   {
     $addFields: {
@@ -175,7 +175,7 @@
 
 ### How many users have 'enim' as one of their tags? 🏷️
 
-```json
+```javascript
 [
   {
     $match: {
@@ -190,7 +190,7 @@
 
 ### What are the names and ages of users who are inactive and have 'velit' as a tag? 🚫🏷️
 
-```json
+```javascript
 [
   {
     $match: {
@@ -209,7 +209,7 @@
 
 ### How many users have a phone number starting with '+1 (940)'? 📞
 
-```json
+```javascript
 [
   {
     $match: {
@@ -224,7 +224,7 @@
 
 ### Who has registered most recently? 🕒
 
-```json
+```javascript
 [
   {
     $sort: {
@@ -246,7 +246,7 @@
 
 ### Categorize users by their favorite fruit. 🍉🍊🍋
 
-```json
+```javascript
 [
   {
     $group: {
@@ -261,7 +261,7 @@
 
 ### How many users have 'ad' as the second tag in their list of tags? 🏷️
 
-```json
+```javascript
 [
   {
     $match: {
@@ -276,7 +276,7 @@
 
 ### Find users who have both 'enim' and 'id' as their tags. 🏷️
 
-```json
+```javascript
 [
   {
     $match: {
@@ -290,7 +290,7 @@
 
 ### List all companies located in the USA with their corresponding user count. 🇺🇸🏢
 
-```json
+```javascript
 [
   {
     $match: {
@@ -315,7 +315,7 @@
 
 ### Lookup Operation 🔍
 
-```json
+```javascript
 [
   {
     $lookup: {
