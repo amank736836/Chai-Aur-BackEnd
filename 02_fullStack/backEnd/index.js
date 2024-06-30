@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
 
-// app.use(express.static('./02_fullStack/backEnd/dist'));
+app.use(express.static('./dist'));
 
 app.get('/', (req, res) => {
     res.send('Server is ready');
