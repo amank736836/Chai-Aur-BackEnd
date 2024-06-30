@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Learning BackEnd",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules ./05_Project(videoTube)/src/index.js",
     "start": "nodemon ./01_production/index.js",
+    "start2": "nodemon ./02_fullStack/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
