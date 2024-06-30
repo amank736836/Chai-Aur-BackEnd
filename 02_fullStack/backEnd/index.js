@@ -4,21 +4,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
 
 const app = express();
 
 // Get __dirname equivalent in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, '/dist')));
+app.use(express.static('.'));
 
-app.get('/', (req, res) => {
-    res.send(`${__filename + ' ' + __dirname}`);
-});
+// app.get('/', (req, res) => {
+//     res.send(`${__filename + ' ' + __dirname}`);
+// });
 
 
 
