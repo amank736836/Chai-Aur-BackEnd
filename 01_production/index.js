@@ -8,7 +8,7 @@ import express from "express";
 const app = express();
 
 // const port = 4000;
-const port = process.env.PORT || 4000;
+const port = process.env.PORT1 || 4000;
 const githubData = {
     "login": "amank736836",
     "id": 144197075,
