@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+// require("dotenv").config();
+// const express = require('express');
+
+dotenv.config();
+
 import express from 'express';
 const app = express();
 
