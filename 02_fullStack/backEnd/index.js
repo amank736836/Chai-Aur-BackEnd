@@ -7,7 +7,7 @@ dotenv.config();
 import express from 'express';
 const app = express();
 
-app.use(express.static('./dist'));
+app.use(express.static('./dist/assets/'));
 
 app.get('/', (req, res) => {
     res.send('Server is ready');
