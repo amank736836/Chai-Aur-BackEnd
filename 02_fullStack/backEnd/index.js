@@ -5,13 +5,22 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import fs from 'fs';
 const app = express();
 
-app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // app.get('/', (req, res) => {
-//     res.send('Server is ready');
+//     fs.readFile('dist/index.html', 'utf8', (err, data) => {
+//         if (err) {
+//             console.error(err);
+//             res.status(500).send('Some error occurred');
+//         }
+//         res.send(data);
+//     });
 // });
+
+
 
 // get a list of 5 jokes
 
