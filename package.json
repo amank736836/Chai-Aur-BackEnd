@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules ./05_Project(videoTube)/src/index.js",
-    "production": "nodemon ./01_production/index.js",
-    "fullStack": "nodemon ./02_fullStack/index.js",
+    "production": "node ./01_production/index.js",
+    "fullStack": "node ./02_fullStack/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
