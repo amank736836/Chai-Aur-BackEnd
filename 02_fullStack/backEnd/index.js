@@ -7,11 +7,11 @@ dotenv.config();
 import express from 'express';
 const app = express();
 
-app.use(express.static('./dist/assets/'));
+app.use(express.static('dist'));
 
-app.get('/', (req, res) => {
-    res.send('Server is ready');
-});
+// app.get('/', (req, res) => {
+//     res.send('Server is ready');
+// });
 
 // get a list of 5 jokes
 
