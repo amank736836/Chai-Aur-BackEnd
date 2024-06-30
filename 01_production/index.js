@@ -8,7 +8,6 @@ import express from "express";
 const app = express();
 
 // const port = 4000;
-const port = process.env.PORT1 || 4000;
 const githubData = {
     "login": "amank736836",
     "id": 144197075,
@@ -64,6 +63,8 @@ app.get('/youtube' , (req,res) => {
 app.get('/github', (req, res) => {
     res.json(githubData);
 });
+
+const port = process.env.PORT1 || 4000;
 
 app.listen(port , () => {
     console.log(`Example app listening at http://localhost:${port}`);
